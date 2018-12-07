@@ -26,9 +26,10 @@
 
 	<dependencies>
 
+		<!-- Compile -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter-data-neo4j</artifactId>
 		</dependency>
 
 		<dependency>
@@ -36,6 +37,12 @@
 			<artifactId>neo4j-java-driver</artifactId>
 			<version>1.7.1</version>
     </dependency>
+		<!-- https://mvnrepository.com/artifact/org.neo4j/neo4j-ogm-bolt-driver -->
+		<dependency>
+			<groupId>org.neo4j</groupId>
+			<artifactId>neo4j-ogm-bolt-driver</artifactId>
+			<version>2.1.6</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -52,6 +59,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>
