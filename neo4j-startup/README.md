@@ -3,6 +3,8 @@
 - [The Neo4j Drivers Manual v1.7 for Java](https://neo4j.com/docs/pdf/neo4j-driver-manual-1.7-java.pdf)
 - [Neo4j Java Driver 1.7 API](https://neo4j.com/docs/api/java-driver/1.7/)
 - [Spring Boot Neo4j Sample](https://github.com/spring-projects/spring-boot/tree/v1.5.18.RELEASE/spring-boot-samples/spring-boot-sample-data-neo4j)
+- [Neo4j for Spring Users](https://neo4j.com/developer/spring-data-neo4j/)
+- [Spring Data Neo4J](https://spring.io/projects/spring-data-neo4j#learn)
 
 ## 运行
 

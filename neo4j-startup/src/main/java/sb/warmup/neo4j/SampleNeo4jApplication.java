@@ -50,7 +50,7 @@ public class SampleNeo4jApplication implements CommandLineRunner {
 
 		System.out.println("Customers found with findByLastName('Smith'):");
 		System.out.println("--------------------------------");
-		for (Customer customer : this.repository.findByLastName("Smith")) {
+		for (Customer customer : this.repository.findByName("Smith")) {
 			System.out.println(customer);
 		}
 	}
