@@ -1,8 +1,10 @@
-package sb.warmup.neo4j;
+package sb.warmup.neo4j.repository;
 
 import java.util.List;
 import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.repository.GraphRepository;
+
+import sb.warmup.neo4j.domain.Customer;
 
 public interface CustomerRepository extends GraphRepository<Customer> {
 

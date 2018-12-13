@@ -22,7 +22,7 @@ public class SampleNeo4jApplicationTests {
 	@Test
 	public void testDefaultSettings() throws Exception {
 		try {
-			SampleNeo4jApplication.main(new String[0]);
+			App.main(new String[0]);
 		}
 		catch (Exception ex) {
 			if (!neo4jServerRunning(ex)) {

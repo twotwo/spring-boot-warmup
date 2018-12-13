@@ -5,8 +5,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import sb.warmup.neo4j.domain.Customer;
+import sb.warmup.neo4j.repository.CustomerRepository;
+
 @SpringBootApplication
-public class SampleNeo4jApplication implements CommandLineRunner {
+public class App implements CommandLineRunner {
 
 	// @Override
 	public void runSmallExample(String... args) throws Exception {
@@ -57,7 +60,7 @@ public class SampleNeo4jApplication implements CommandLineRunner {
 
 	public static void main(String[] args) throws Exception {
 		// SpringApplication.runSmallExample(SampleNeo4jApplication.class, args);
-		SpringApplication.run(SampleNeo4jApplication.class, args);
+		SpringApplication.run(App.class, args);
 	}
 
 }

@@ -1,4 +1,4 @@
-package sb.warmup.neo4j;
+package sb.warmup.neo4j.domain;
 
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
