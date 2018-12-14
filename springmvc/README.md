@@ -37,3 +37,35 @@ sb.warmup:data-rest:jar:0.0.1-SNAPSHOT
 |  \- org.springframework.data:spring-data-rest-webmvc:jar:3.1.2.RELEASE:compile
 \- org.springframework.boot:spring-boot-starter-test:jar:2.1.0.RELEASE:test
 ```
+
+## Profiles
+
+参考 [Profiles](https://docs.spring.io/spring-boot/docs/1.5.18.RELEASE/reference/html/boot-features-profiles.html)
+
+### src/main/resources/application.properties
+
+```
+spring.profiles.active = local
+```
+
+## Logging
+
+参考 [Logging](https://docs.spring.io/spring-boot/docs/1.5.18.RELEASE/reference/html/boot-features-logging.html) & ["How-to" Logging](https://docs.spring.io/spring-boot/docs/1.5.18.RELEASE/reference/html/howto-logging.html)
+
+### pom.xml
+
+- spring-boot-starter-logging ==> spring-boot-starter-log4j2
+
+### src/main/resources/application-profile.properties
+
+```
+# Color-coded output
+spring.output.ansi.enabled=DETECT
+# Log Levels
+logging.level.root=WARN
+logging.level.sb.warmup.springmvc=DEBUG
+```
+
+### src/main/resources/log4j2-profile.xml
+
+参考 [Color-coded output](http://wiki.li3huo.com/apache_log4j#Color-coded_output) 
