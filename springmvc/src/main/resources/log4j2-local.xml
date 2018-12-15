@@ -3,13 +3,16 @@
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT" follow="true">
             <PatternLayout>
-                <pattern>%d{MM/dd HH:mm:ss.SSS} [%thread] %highlight{${LOG_LEVEL_PATTERN:-%5p}}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=green, DEBUG=blue} [%style{%-30.30C{-2}}{cyan}:%4L] %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}</pattern>
+                <pattern>%d{MM/dd HH:mm:ss.SSS} %highlight{${LOG_LEVEL_PATTERN:-%5p}}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=green, DEBUG=blue} %10thread %style{%-30.30C{-2}}{cyan} ➜ %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}</pattern>
             </PatternLayout>
         </Console>
     </Appenders>
     <Loggers>
-        <Root level="info">
+        <Root level="WARN">
             <AppenderRef ref="Console" />
         </Root>
+        <logger name="sb.warmup.springmvc" level="DEBUG">
+            <AppenderRef ref="Console"/>
+        </logger>
     </Loggers>
 </Configuration>
