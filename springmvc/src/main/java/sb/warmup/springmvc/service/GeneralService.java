@@ -5,11 +5,13 @@ import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.*;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Service;
 
 import sb.warmup.springmvc.domain.Template;
 
@@ -18,10 +20,11 @@ import com.alibaba.fastjson.JSON;
 /**
  * GeneralService
  */
+@Service
 public class GeneralService {
   private static Logger LOGGER = LoggerFactory.getLogger(GeneralService.class);
 
-  Map<String, Template> templates;
+  Map<String, Template> templates = new HashMap<String, Template>();
 
   public GeneralService() {
     Resource resource = new ClassPathResource("template.json");
@@ -33,7 +36,7 @@ public class GeneralService {
     } catch (IOException e) {
       // e.printStackTrace();
     }
-
+    LOGGER.info("load template = {}", templates.size());
   }
 
   /**
@@ -42,7 +45,7 @@ public class GeneralService {
    * @param input
    * @return
    */
-  public static String stearmToString(InputStream input) throws IOException {
+  public String stearmToString(InputStream input) throws IOException {
     BufferedReader reader = null;
     StringBuffer sb = new StringBuffer();
     try {
@@ -50,7 +53,6 @@ public class GeneralService {
       reader = new BufferedReader(inputStreamReader);
       String str = null;
       while ((str = reader.readLine()) != null) {
-        LOGGER.debug("str={}", str);
         sb.append(str);
       }
       reader.close();
@@ -66,6 +68,10 @@ public class GeneralService {
       }
     }
     return sb.toString();
+  }
+
+  public Template getTemplate(String keyword) {
+    return templates.get(keyword);
   }
 
 }

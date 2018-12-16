@@ -9,7 +9,11 @@ import lombok.Data;
 public class Template {
 
   private String keyword;
-	private String dataSource;
+	private String ds;
 	private String[] params;
 	private String query;
+
+	public DataSource getDataSource() {
+		return DataSource.toDataSource(ds);
+	}
 }

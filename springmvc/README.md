@@ -70,10 +70,25 @@ logging.level.sb.warmup.springmvc=DEBUG
 
 参考 [Color-coded output](http://wiki.li3huo.com/apache_log4j#Color-coded_output) 
 
+## Add Service
+
+```java
+@Service // Annotation for Spring Service
+public class GeneralService {
+
+}
+```
+
 ### 加载 json 配置文件
+
+`src/main/resources/template.json`
+
+### 使用 Enum 校验配置文件
+
+
 
 ## Unit Test
 
 ```bash
-mvn test -Dtest=QueryServiceTest#parseTest
+mvn test -Dtest=GeneralServiceTest#parseTest
 ```
