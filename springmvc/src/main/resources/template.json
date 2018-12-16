@@ -1,0 +1,9 @@
+[
+  { "keyword": "neo4j-all", "dataSource": "neo4j", "query": "MATCH (n) RETURN n" },
+  { "keyword": "docs", "dataSource": "neo4j", "query": "MATCH (n:JudicialDocument) where n.documentType= \"{{type}}\" RETURN n" },
+  { "keyword": "cases", "dataSource": "neo4j", "query": "MATCH (case:LegalCase)-[rel:hasPlaintiff|hasDefendant|hasThirdParty]->(party:OrganizationOrPerson{name:'{{name}}'}) RETURN case,COUNT(case)" },
+  { "keyword": "company", "dataSource": "neo4j", "query": "MATCH (p1:OrganizationOrPerson)<-[rel1:hasDefendant|hasPlaintiff]-(case:LegalCase)-[rel2:hasDefendant|hasPlaintiff]->(p2:OrganizationOrPerson{name:'{{name}}'}) RETURN case,COUNT(case),p1,p2" },
+  { "keyword": "neo4j-1", "dataSource": "neo4j", "query": "MATCH (n) RETURN n" },
+  { "keyword": "neo4j-2", "dataSource": "neo4j", "query": "MATCH (n) RETURN n" },
+  { "keyword": "es-demo", "dataSource": "es", "query": "{\"query\": { \"match_all\":{}}}{{key1}} ","index": "a","type": "b" }
+]

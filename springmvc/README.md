@@ -69,3 +69,11 @@ logging.level.sb.warmup.springmvc=DEBUG
 ### src/main/resources/log4j2-profile.xml
 
 参考 [Color-coded output](http://wiki.li3huo.com/apache_log4j#Color-coded_output) 
+
+### 加载 json 配置文件
+
+## Unit Test
+
+```bash
+mvn test -Dtest=QueryServiceTest#parseTest
+```
