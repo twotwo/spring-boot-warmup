@@ -85,7 +85,11 @@ public class GeneralService {
 
 ### 使用 Enum 校验配置文件
 
+### 使用 Enum 校验配置文件
 
+- [HTTP Streaming directly to OutputStream](https://www.logicbig.com/tutorials/spring-framework/spring-web-mvc/streaming-response-body.html)
+
+`StreamingResponseBody`
 
 ## Unit Test
 
