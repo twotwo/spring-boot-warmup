@@ -2,6 +2,7 @@ package sb.warmup.springmvc.web;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,10 +38,13 @@ public class APIController {
     public StreamingResponseBody perf(@PathVariable(value = "keyword") String keyword) {
         return new StreamingResponseBody() {
             @Override
-            public void writeTo (OutputStream out) throws IOException {
+            public void writeTo(OutputStream out) throws IOException {
+                OutputStreamWriter writer = new OutputStreamWriter(out);
+                writer.append("<!doctype html><html lang=\"zh-CN\">");
+                writer.append("<head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head>");
+                writer.append("<body><pre>");
                 for (int i = 0; i < 1000; i++) {
-                    out.write((Integer.toString(i) + " - ")
-                                        .getBytes());
+                    out.write((Integer.toString(i) + " - ").getBytes());
                     out.flush();
                     try {
                         Thread.sleep(5);
@@ -48,6 +52,7 @@ public class APIController {
                         e.printStackTrace();
                     }
                 }
+                writer.append("</pre></body></html>");
             }
         };
     }
