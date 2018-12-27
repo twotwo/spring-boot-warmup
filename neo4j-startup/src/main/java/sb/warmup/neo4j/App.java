@@ -38,7 +38,7 @@ public class App implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		log.info("myConfig={}",myConfig.getList());
+		log.info("myConfig={}",myConfig.getMap());
 		this.repository.deleteAll();
 
 		// save a couple of customers

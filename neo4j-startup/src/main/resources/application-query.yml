@@ -1,6 +1,7 @@
 querys:
-  list:
-    - name: company-timeline
+  map:
+    company-timeline:
+      name: company-timeline
       description: 05/23 c/company-timeline
       dataSource: neo4j
       params: 
@@ -12,7 +13,8 @@ querys:
       WHERE datetime(b.endDate)>=datetime($begin) AND datetime(b.endDate)<=datetime($end) 
       RETURN length(filter(x IN collect(c) where x.name='原告' OR x.name='被告')) AS 案件总数,length(filter(x IN collect(c) where x.name='原告')) AS 原告数量"
 
-    - name: case-info
+    case-info:
+      name: case-info
       description: 07 q/case-info
       dataSource: neo4j
       params: 
