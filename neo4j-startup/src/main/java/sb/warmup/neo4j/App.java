@@ -5,10 +5,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import lombok.extern.slf4j.Slf4j;
 import sb.warmup.neo4j.domain.Customer;
+import sb.warmup.neo4j.domain.QueryConfig;
 import sb.warmup.neo4j.repository.CustomerRepository;
 
 @SpringBootApplication
+@Slf4j
 public class App implements CommandLineRunner {
 
 	// @Override
@@ -30,8 +33,12 @@ public class App implements CommandLineRunner {
 	@Autowired
 	private CustomerRepository repository;
 
+	@Autowired
+  private QueryConfig myConfig;
+
 	@Override
 	public void run(String... args) throws Exception {
+		log.info("myConfig={}",myConfig.getList());
 		this.repository.deleteAll();
 
 		// save a couple of customers

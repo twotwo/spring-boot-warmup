@@ -1,0 +1,22 @@
+querys:
+  list:
+    - name: company-timeline
+      description: 05/23 c/company-timeline
+      dataSource: neo4j
+      params: 
+        name: My Company
+        begin: 2018-01-01
+        end: 2018-12-31
+      query: "MATCH (a:Company{name:$name})
+      WITH a MATCH (a)-[c]-(b:LegalCase) 
+      WHERE datetime(b.endDate)>=datetime($begin) AND datetime(b.endDate)<=datetime($end) 
+      RETURN length(filter(x IN collect(c) where x.name='原告' OR x.name='被告')) AS 案件总数,length(filter(x IN collect(c) where x.name='原告')) AS 原告数量"
+
+    - name: case-info
+      description: 07 q/case-info
+      dataSource: neo4j
+      params: 
+        name: My Company
+      query: "MATCH (a:Company{name:$name}) 
+      WITH a MATCH (a)-[:plaintiff|:defendant]-(all:LegalCase) 
+      RETURN COUNT(all) as all"

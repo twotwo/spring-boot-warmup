@@ -1,0 +1,11 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - App",
+      "request": "launch",
+      "mainClass": "sb.warmup.neo4j.App",
+      "projectName": "neo4j-startup"
+    }
+  ]
+}
