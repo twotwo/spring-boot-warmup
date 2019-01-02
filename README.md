@@ -41,3 +41,7 @@ querys:
         name: My Company
 ```
 
+### 主动加载 YAML 文件
+- [Spring @PropertySource using YAML](https://stackoverflow.com/questions/21271468/spring-propertysource-using-yaml)
+- [7.6. Customizing the nature of a bean](https://docs.spring.io/spring-framework/docs/4.3.21.RELEASE/spring-framework-reference/html/beans.html#beans-factory-lifecycle-initializingbean)
+

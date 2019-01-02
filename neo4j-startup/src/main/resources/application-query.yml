@@ -2,7 +2,7 @@ querys:
   map:
     company-timeline:
       name: company-timeline
-      description: 05/23 c/company-timeline
+      description: get company info by year
       dataSource: neo4j
       params: 
         name: My Company

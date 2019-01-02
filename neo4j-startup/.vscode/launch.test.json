@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "neo4j-startup",
+                "projectName": "neo4j-startup",
+                "workingDirectory": "/opt/local/ide/git_storage/github/spring-boot-warmup/neo4j-startup",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "neo4j-startup",
+                "projectName": "neo4j-startup",
+                "workingDirectory": "/opt/local/ide/git_storage/github/spring-boot-warmup/neo4j-startup",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}
