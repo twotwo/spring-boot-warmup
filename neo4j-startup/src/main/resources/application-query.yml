@@ -2,6 +2,7 @@ querys:
   map:
     company-timeline:
       name: company-timeline
+      hint: line 1
       description: get company info by year
       dataSource: neo4j
       params: 
@@ -15,7 +16,8 @@ querys:
 
     case-info:
       name: case-info
-      description: 07 q/case-info
+      hint: line 2
+      description: get case info
       dataSource: neo4j
       params: 
         name: My Company

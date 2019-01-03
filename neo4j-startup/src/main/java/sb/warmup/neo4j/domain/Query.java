@@ -10,6 +10,7 @@ import lombok.Data;
 @Data
 public class Query {
 	private String name;
+	private String hint;
 	private String description;
 	private String dataSource;
 	private Map<String, Object> params;

@@ -1,3 +1,21 @@
 spring:
-      profiles:
-            active: dev,query
+  profiles:
+    active: dev,query
+  data:
+    neo4j:
+      repositories:
+        enabled: true
+      uri: bolt://127.0.0.1:7687
+      #uri: http://127.0.0.1:7474
+      username: neo4j
+      password: secret
+
+# 日志设置 https://docs.spring.io/spring-boot/docs/1.5.18.RELEASE/reference/html/boot-features-logging.html
+logging:
+  pattern:
+    console: "%clr(%d{HH:mm:ss.SSS}){yellow} [%thread] %-5level %logger- %msg%n"
+  level:
+    root: FATAL
+    org.springframework: 'OFF'
+    sb.warmup.neo4j: DEBUG
+    sb.warmup.neo4j.App: FATAL

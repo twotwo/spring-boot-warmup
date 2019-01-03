@@ -16,7 +16,7 @@ import sb.warmup.neo4j.App;
 /**
  * 图谱服务测试
  * 
- * mvn test -Dtest=QueryConfigTest
+ * mvn test -Dtest=QueryConfigTest -Dquery.path=file:/tmp/new.yml
  */
 @Slf4j
 public class QueryConfigTest {
@@ -26,9 +26,10 @@ public class QueryConfigTest {
 
   @Test
   public void readConfig() {
-    log.info("myConfig={}",config.getMap());
-    assertEquals(config.getMap().get("company-timeline").getDescription(),"get company info by year");
-    log.info("es-demo={}", config.getMap().get("es-demo"));
+    log.info("myConfig={}",config);
+    log.info("company-timeline={}",config.getQuery("company-timeline").getDescription());
+    assertEquals(config.getQuery("company-timeline").getDescription(),"get company info by year");
+    log.info("es-demo={}", config.getQuery("es-demo"));
   }
 
 }

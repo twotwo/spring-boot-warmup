@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import lombok.extern.slf4j.Slf4j;
 import sb.warmup.neo4j.domain.Customer;
-import sb.warmup.neo4j.domain.QueryConfig;
 import sb.warmup.neo4j.repository.CustomerRepository;
 
 @SpringBootApplication
@@ -21,24 +20,20 @@ public class App implements CommandLineRunner {
 		example.addPerson("Ada");
 		example.addPerson("Alice");
 		example.addPerson("Bob");
-		System.out.println("found with printPeople():");
-		System.out.println("-------------------------------");
+		log.debug("found with printPeople():");
+		log.debug("-------------------------------");
 		example.printPeople("A");
 		example.close();
 		// close connection
-		System.out.println("example.close()");
-		System.out.println("--------------------------------");
+		log.debug("example.close()");
+		log.debug("--------------------------------");
 	}
 
 	@Autowired
 	private CustomerRepository repository;
 
-	@Autowired
-  private QueryConfig myConfig;
-
 	@Override
 	public void run(String... args) throws Exception {
-		log.info("myConfig={}",myConfig.getMap());
 		this.repository.deleteAll();
 
 		// save a couple of customers
@@ -46,22 +41,21 @@ public class App implements CommandLineRunner {
 		this.repository.save(new Customer("Bob", "Smith"));
 
 		// fetch all customers
-		System.out.println("Customers found with findAll():");
-		System.out.println("-------------------------------");
+		log.debug("Customers found with findAll():");
+		log.debug("-------------------------------");
 		for (Customer customer : this.repository.findAll()) {
-			System.out.println(customer);
+			log.debug("customer={}", customer);
 		}
-		System.out.println();
 
 		// fetch an individual customer
-		System.out.println("Customer found with findByFirstName('Alice'):");
-		System.out.println("--------------------------------");
-		System.out.println(this.repository.findByFirstName("Alice"));
+		log.debug("Customer found with findByFirstName('Alice'):");
+		log.debug("--------------------------------");
+		log.debug("Alice={}", this.repository.findByFirstName("Alice"));
 
-		System.out.println("Customers found with findByLastName('Smith'):");
-		System.out.println("--------------------------------");
+		log.debug("Customers found with findByLastName('Smith'):");
+		log.debug("--------------------------------");
 		for (Customer customer : this.repository.findByName("Smith")) {
-			System.out.println(customer);
+			log.debug("Smith={}", customer);
 		}
 	}
 
