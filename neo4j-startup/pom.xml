@@ -75,6 +75,7 @@
         <version>2.22.1</version>
         <configuration>
           <testFailureIgnore>true</testFailureIgnore>
+					<!-- <skipTests>true</skipTests> -->
         </configuration>
       </plugin>
 		</plugins>

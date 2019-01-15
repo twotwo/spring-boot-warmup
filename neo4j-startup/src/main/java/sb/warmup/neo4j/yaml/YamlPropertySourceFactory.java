@@ -21,7 +21,7 @@ public class YamlPropertySourceFactory extends DefaultPropertySourceFactory {
     if (resource == null) {
       super.createPropertySource(name, resource);
     }
-    log.warn("resource={}", resource.getResource().getFilename());
+    log.warn("resource={}", resource.getResource().getURI());
     return new YamlPropertySourceLoader().load(resource.getResource().getFilename(), resource.getResource(), null);
   }
 
