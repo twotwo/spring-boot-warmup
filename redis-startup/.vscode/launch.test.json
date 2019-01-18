@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "redis-startup",
+                "projectName": "redis-startup",
+                "workingDirectory": "/opt/local/ide/git_storage/github/spring-boot-warmup/redis-startup",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "redis-startup",
+                "projectName": "redis-startup",
+                "workingDirectory": "/opt/local/ide/git_storage/github/spring-boot-warmup/redis-startup",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}
