@@ -1,11 +1,16 @@
 # Spring Boot集成MyBatis
 
 - [Spring Boot集成MyBatis的2种方式](https://www.cnblogs.com/nuccch/p/9060594.html)
-- [Sample Code](https://github.com/JeffLi1993/springboot-learning-example/tree/master/springboot-mybatis)
+- [Sample Code - MyBatis with Annotation](https://github.com/JeffLi1993/springboot-learning-example/tree/master/springboot-mybatis-annotation)
 
 ## 配置 MyBatis
 
 - [XML 映射配置文件](http://www.mybatis.org/mybatis-3/zh/configuration.html)
+
+### JDT Config
+
+- `.classpath` JavaSE-1.8
+- `.settings/org.eclipse.jdt.core.prefs` 1.8
 
 ### 注解方式
 
@@ -38,6 +43,6 @@ docker exec -it mybatis bash
 
 ## API
 
-### Using @Query Annotation
+### Using @Mapper Annotation
 
-- [2.2.3. Using @Query Annotation](https://docs.spring.io/spring-data/elasticsearch/docs/current/reference/html/#elasticsearch.query-methods.at-query)
+- [Quick Setup](http://www.mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/index.html)
