@@ -1,4 +1,4 @@
-package sb.warmup.es;
+package sb.warmup.es.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;

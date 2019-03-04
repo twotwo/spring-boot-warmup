@@ -3,6 +3,7 @@
 - [使用springdata操作es出错](https://mp.weixin.qq.com/s/2P85VockSOhZolU7s7xxTw)
 - [Reference](https://docs.spring.io/spring-data/elasticsearch/docs/2.1.x/reference/html/)
 - [Java API](https://docs.spring.io/spring-data/elasticsearch/docs/2.1.x/api/) spring-boot v1.5 -> spring-data-elasticsearch v2.1.x
+- [Sample code](https://github.com/spring-projects/spring-boot/tree/1.5.x/spring-boot-samples/spring-boot-sample-data-elasticsearch)
 
 ## 配置 ES
 

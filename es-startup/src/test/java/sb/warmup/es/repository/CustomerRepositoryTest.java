@@ -1,4 +1,4 @@
-package sb.warmup.es;
+package sb.warmup.es.repository;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -7,14 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import lombok.extern.slf4j.Slf4j;
+import sb.warmup.es.App;
+import sb.warmup.es.models.Customer;
 
 /**
- * RepositoryTest
+ * CustomerRepositoryTest
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = App.class)
 @Slf4j
-public class RepositoryTest {
+public class CustomerRepositoryTest {
   @Autowired
   private CustomerRepository repository;
 
@@ -27,7 +29,7 @@ public class RepositoryTest {
   }
 
   /**
-   * mvn test -Dtest=RepositoryTest#testFindAll
+   * mvn test -Dtest=CustomerRepositoryTest#testFindAll
    */
   @Test
   public void testFindAll() {
