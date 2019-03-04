@@ -1,7 +1,6 @@
 package sb.warmup.es;
 
 import java.io.File;
-
 import org.elasticsearch.client.transport.NoNodeAvailableException;
 import org.junit.ClassRule;
 import org.junit.Rule;
@@ -9,10 +8,8 @@ import org.junit.Test;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
-
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.test.rule.OutputCapture;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -31,9 +28,8 @@ public class SampleElasticsearchApplicationTests {
 	@Test
 	public void testDefaultSettings() {
 		try {
-			new SpringApplicationBuilder(SampleElasticsearchApplication.class).run();
-		}
-		catch (Exception ex) {
+			new SpringApplicationBuilder(App.class).run();
+		} catch (Exception ex) {
 			if (!elasticsearchRunning(ex)) {
 				return;
 			}

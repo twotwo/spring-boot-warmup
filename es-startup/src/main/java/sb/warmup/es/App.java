@@ -6,17 +6,17 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SampleElasticsearchApplication implements CommandLineRunner {
+public class App implements CommandLineRunner {
 
 	@Autowired
 	private CustomerRepository repository;
 
 	@Override
 	public void run(String... args) throws Exception {
-		this.repository.deleteAll();
-		saveCustomers();
-		fetchAllCustomers();
-		fetchIndividualCustomers();
+		// this.repository.deleteAll();
+		// saveCustomers();
+		// fetchAllCustomers();
+		// fetchIndividualCustomers();
 	}
 
 	private void saveCustomers() {
@@ -46,7 +46,7 @@ public class SampleElasticsearchApplication implements CommandLineRunner {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(SampleElasticsearchApplication.class).close();
+		SpringApplication.run(App.class).close();
 	}
 
 }
