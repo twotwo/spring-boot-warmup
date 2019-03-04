@@ -12,6 +12,7 @@ public interface CustomerRepository extends ElasticsearchRepository<Customer, St
 	public List<Customer> findByLastName(String lastName);
 
 	@Query("select c from Customer c")
-	public List<Customer> listCustomers(String name);
+	// @Query("{\"bool\" : {\"must\" : {\"field\" : {\"lastName\" : \"?0\"}}}}")
+	public List<Customer> findByName(String name);
 
 }

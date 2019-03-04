@@ -16,11 +16,8 @@ public class App implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		// this.repository.deleteAll();
-		// saveCustomers();
-		// fetchAllCustomers();
-		// fetchIndividualCustomers();
-		service.fetchAllCustomers();
+
+		// service.fetchAllCustomers();
 	}
 
 	public static void main(String[] args) {

@@ -34,7 +34,15 @@ public class CustomerRepositoryTest {
   @Test
   public void testFindAll() {
     for (Customer customer : this.repository.findAll()) {
-			log.debug("cusomer={}", customer);
+			log.debug("testFindAll={}", customer);
+		}
+  }
+
+  @Test
+  public void testListCustomers() {
+    log.warn("=== List Customers ===");
+    for (Customer customer : this.repository.findByLastName("Smith")) {
+			log.debug("testListCustomers={}", customer);
 		}
   }
 
