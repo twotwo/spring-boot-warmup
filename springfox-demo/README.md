@@ -12,20 +12,41 @@
 
 ```xml
     <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+    <!-- 让项目支持 OpenAPI Spec -->
     <dependency>
       <groupId>io.springfox</groupId>
       <artifactId>springfox-swagger2</artifactId>
       <version>2.9.2</version>
     </dependency>
+    <!-- 让项目支持 API 调试 -->
     <dependency>
       <groupId>io.springfox</groupId>
       <artifactId>springfox-swagger-ui</artifactId>
       <version>2.9.2</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/io.github.swagger2markup/swagger2markup -->
+    <!-- 让项目支持 OpenAPI 文档导出 -->
     <dependency>
       <groupId>io.github.swagger2markup</groupId>
       <artifactId>swagger2markup</artifactId>
       <version>1.3.3</version>
     </dependency>
 ```
+
+### Spring Boot Layers Management
+
+无侵入的引入 Swagger2 支持
+
+#### 1. Injection Swagger2 Configuration
+
+config.`Swagger2Config`.java
+
+run `mvn clean spring-boot:run -Dswagger.enabled`
+
+#### 2. Injection Swagger2 Doc Generator
+
+test.`Swagger2MarkupTest`
+
+run `mvn test -Dswagger.enabled`
+
+run `asciidoctor -n target/api-doc/API.adoc`

@@ -15,9 +15,9 @@ import io.github.swagger2markup.markup.builder.MarkupLanguage;
 import io.swagger.config.SwaggerConfig;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {DemoApplication.class, SwaggerConfig.class},
+@SpringBootTest(classes = {App.class, SwaggerConfig.class},
     webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
-public class DemoApplicationTests {
+public class Swagger2MarkupTest {
 	public static final String API_DIR = "http://localhost:8080/v2/api-docs";
 	public static final String DOC_DIR = "./target/api-doc";
 
