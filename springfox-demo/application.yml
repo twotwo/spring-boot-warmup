@@ -4,15 +4,22 @@ spring:
 
 server:
   port: 8080
+  contextPath: /demo
 
 endpoints:
   actuator: 
     enabled: false
     sensitive: false
 
-
 logging:
   level:
     root: WARN
     org.springframework: OFF
     com.example.demo: DEBUG
+
+springfox:
+  documentation:
+    swagger:
+      v2:
+        host: km.com:8080
+        path: /api-docs

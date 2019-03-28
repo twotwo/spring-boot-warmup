@@ -43,7 +43,17 @@ config.`Swagger2Config`.java
 
 run `mvn clean spring-boot:run -Dswagger.enabled`
 
-#### 2. Injection Swagger2 Doc Generator
+#### 2. Swagger2 Dev behind Reverse Proxy
+
+run `mvn clean spring-boot:run -Dswagger.enabled -Dspringfox.documentation.swagger.v2.host=your-host/your-context`
+
+方法2
+
+- 配置 `application.yml`
+- 访问 `http://localhost:8080/demo/swagger-ui.html`
+- 请求 配置中对应的服务地址
+
+#### 3. Injection Swagger2 Doc Generator
 
 test.`Swagger2MarkupTest`
 
