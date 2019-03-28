@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.Example;
+import io.swagger.annotations.ExampleProperty;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -24,7 +28,10 @@ public class DemoController {
   }
 
   @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-  public String getUserById(@PathVariable(value = "id") String id) throws Exception {
+  public String getUserById(@ApiParam(value = "用户ID", required = true,
+      example = "12") @PathVariable(value = "id") String id) throws Exception {
+    log.info("getUserById() id={}", id);
+
     return "getUserById, id=" + id;
   }
 
