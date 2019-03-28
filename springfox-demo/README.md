@@ -60,3 +60,5 @@ test.`Swagger2MarkupTest`
 run `mvn test -Dswagger.enabled`
 
 run `asciidoctor -n target/api-doc/API.adoc`
+
+#### 4. Set ApiModelProperty for View Object
