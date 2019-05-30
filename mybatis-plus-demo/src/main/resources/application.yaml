@@ -1,14 +1,24 @@
 # DataSource Config
 spring:
   datasource:
-    driver-class-name: org.h2.Driver
-    schema: classpath:db/schema-h2.sql
-    data: classpath:db/data-h2.sql
-    url: jdbc:h2:mem:test
+    # comment below param in online environment!
+    initialization-mode: always
+    # auto detected from url
+    # driver-class-name: com.mysql.cj.jdbc.Driver
+    schema: classpath:mysql/schema.sql
+    data: classpath:mysql/data.sql
+    url: jdbc:mysql://localhost/test
+    # url: jdbc:h2:mem:test
     username: root
-    password: test
+    password: secret
 
 # Logger Config
 logging:
   level:
+    root: WARN
+    org.springframework: OFF
     com.li3huo.mybatisplus.demo: debug
+
+# User Define Value
+test:
+  key: abc 

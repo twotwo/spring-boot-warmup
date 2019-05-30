@@ -16,6 +16,14 @@
 - lombok
 - h2
 
+```xml
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+```
+
 ### 数据库 Schema & Data
 
 - `src/main/resources/db/schema-h2.sql`
@@ -46,9 +54,9 @@ spring:
 
 ### 编码
 
-- 实体类    `src/main/java/com/li3huo/mybatisplus/demo/entity/User.java`
-- Mapper类 `src/main/java/com/li3huo/mybatisplus/demo/mapper/UserMapper.java`
-- 测试类    `src/test/java/com/li3huo/mybatisplus/demo/DemoApplicationTests.java`
+- 实体类 `src/main/java/com/li3huo/mybatisplus/demo/entity/User.java`
+- Mapper 类 `src/main/java/com/li3huo/mybatisplus/demo/mapper/UserMapper.java`
+- 测试类 `src/test/java/com/li3huo/mybatisplus/demo/DemoApplicationTests.java`
 
 ### 运行测试
 
@@ -60,4 +68,28 @@ spring:
 
 ### @TableName
 
+entity.User
+
+```java
+@Data
+@TableName("t_user")
+public class User {
+  private Long id;
+  private String name;
+  private Integer age;
+  private String email;
+}
+```
+
+### @TableId
+
+```java
+  @TableId(value = "id", type = IdType.AUTO)
+  private Long id;
+```
+
 ### @TableField
+
+## CRUD
+
+[Mapper CRUD](https://mybatis.plus/guide/crud-interface.html)

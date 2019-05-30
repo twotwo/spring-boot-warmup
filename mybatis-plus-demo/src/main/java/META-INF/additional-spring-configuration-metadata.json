@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "test",
+  "type": "java.util.Map",
+  "description": "A description for 'test'"
+}]}
