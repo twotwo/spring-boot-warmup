@@ -7,10 +7,13 @@ spring:
     # driver-class-name: com.mysql.cj.jdbc.Driver
     schema: classpath:mysql/schema.sql
     data: classpath:mysql/data.sql
-    url: jdbc:mysql://localhost/test
+    url: jdbc:mysql://localhost/test?characterEncoding=utf8
     # url: jdbc:h2:mem:test
     username: root
     password: secret
+
+mybatis-plus:
+  type-enums-package: com.li3huo.mybatisplus.demo.entity.enums
 
 # Logger Config
 logging:

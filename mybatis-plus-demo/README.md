@@ -62,6 +62,11 @@ spring:
 
 `mvn test`
 
+```mysql
+CREATE DATABASE test
+    DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci;
+```
+
 ## 注解
 
 - [参考文档](https://mybatis.plus/guide/annotation.html)
@@ -89,6 +94,7 @@ public class User {
 ```
 
 ### @TableField
+
 
 ## CRUD
 

@@ -36,10 +36,7 @@ public class CRUDTest {
 
 	@Test
 	public void testInsert() {
-		User user = new User();
-		user.setName("li3huo");
-		user.setAge(44);
-		user.setEmail("admin@li3huo.com");
+		User user = new User().setName("li3huo").setAge(44).setEmail("admin@li3huo.com");
 		assertThat(userMapper.insert(user)).isGreaterThan(0);
 		assertThat(user.getId()).isNotNull();
 	}
@@ -57,7 +54,8 @@ public class CRUDTest {
 	@Test
 	public void testUpdate() {
 		// updateById
-		assertThat(userMapper.updateById(new User().setId(1L).setEmail("test@li3huo.com"))).isGreaterThan(0);
+		assertThat(userMapper.updateById(new User().setId(1L).setEmail("test@li3huo.com")))
+				.isGreaterThan(0);
 
 		// update by condition
 		assertThat(userMapper.update(new User().setName("NewName"),
@@ -92,11 +90,11 @@ public class CRUDTest {
 	public void testDelete() {
 		// assertThat(userMapper.deleteById(3L)).isGreaterThan(0);
 
+		userMapper.insert(new User().setId(10086L).setName("李四").setEmail("bill@li3huo.com").setAge(3));
 
 		userMapper
 				.insert(new User().setId(10086L).setName("Bill").setEmail("bill@li3huo.com").setAge(3));
-		userMapper
-				.insert(new User().setId(10087L).setName("Ben").setEmail("ben@li3huo.com").setAge(5));
+		userMapper.insert(new User().setId(10087L).setName("Ben").setEmail("ben@li3huo.com").setAge(5));
 
 		assertThat(userMapper.delete(new QueryWrapper<User>().lambda().eq(User::getName, "bill")))
 				.isGreaterThan(0);
