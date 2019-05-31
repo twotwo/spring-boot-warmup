@@ -95,6 +95,28 @@ public class User {
 
 ### @TableField
 
+```java
+@Data
+@Accessors(chain = true)
+@TableName("t_order")
+public class ExamOrder extends BaseEntity {
+  private String patient;
+  // don't handle one-to-many relationship
+  @TableField(exist = false)
+  ...
+}
+
+@Data
+@EqualsAndHashCode
+public class BaseEntity {
+  @TableId(value = "id", type = IdType.AUTO)
+  private Long id;
+  @TableField(fill = FieldFill.INSERT)
+  private Date createTime;
+  @TableField(fill = FieldFill.INSERT_UPDATE)
+  private Date updateTime;
+}
+```
 
 ## CRUD
 

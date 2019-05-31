@@ -37,5 +37,5 @@ create table t_order_item (
     item_id bigint not null COMMENT '外键-体检项目ID',
 		doctor VARCHAR(255) COMMENT '检查医生',
 		record VARCHAR(512) COMMENT '检查记录',
-		state TINYINT COMMENT '项目检查状态，',
+		state TINYINT COMMENT '项目检查状态，'
 );

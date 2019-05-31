@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.li3huo.mybatisplus.demo.entity.ExamItem;
 import com.li3huo.mybatisplus.demo.entity.ExamOrder;
 import com.li3huo.mybatisplus.demo.entity.OrderItem;
@@ -53,7 +54,6 @@ public class ExamService {
             .setTotal(calcTotal(items))
             .setState(OrderState.INIT);
     orderMapper.insert(order);
-    log.info("New Order: {}", order);
     // add ExamOrders to DB
     if(order.getId()>0) {
       for(ExamItem item: items) {
@@ -62,6 +62,17 @@ public class ExamService {
       }
     }
     // orderCounter.increment();
+    ExamOrder newOrder = getOrderbyId(order.getId());
+    log.info("New Order: {}", newOrder);
+    return newOrder;
+  }
+
+  public ExamOrder getOrderbyId(Long id) {
+    ExamOrder order = orderMapper.selectById(id);
+    // load ExamItems
+    List<OrderItem> orderItems = orderItemMapper.selectList(new QueryWrapper<OrderItem>().lambda().eq(OrderItem::getOrderId, id));
+    log.info("orderItems() {}",orderItems);
+    order.setItems(itemMapper.selectBatchIds(orderItems.stream().map(OrderItem :: getItemId).collect(Collectors.toList())));
     return order;
   }
 
