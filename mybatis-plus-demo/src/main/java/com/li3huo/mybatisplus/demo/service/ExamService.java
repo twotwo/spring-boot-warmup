@@ -58,7 +58,7 @@ public class ExamService {
     if(order.getId()>0) {
       for(ExamItem item: items) {
         orderItemMapper.insert(new OrderItem().setOrderId(order.getId())
-          .setItemId(item.getId()).setState(order.getState()));
+          .setItemId(item.getId()));
       }
     }
     // orderCounter.increment();
