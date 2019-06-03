@@ -14,6 +14,8 @@ import com.li3huo.mybatisplus.demo.mapper.ExamItemMapper;
 import com.li3huo.mybatisplus.demo.mapper.ExamOrderMapper;
 import com.li3huo.mybatisplus.demo.mapper.OrderItemMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,6 +24,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Service
 @Slf4j
+@CacheConfig(cacheNames = "ExamItemsCache")
 public class ExamService {
   @Autowired
   private ExamItemMapper itemMapper;
@@ -32,6 +35,7 @@ public class ExamService {
   @Autowired
   private OrderItemMapper orderItemMapper;
 
+  @Cacheable
   public List<ExamItem> getAllExamItem() {
     return itemMapper.selectList(null);
   }

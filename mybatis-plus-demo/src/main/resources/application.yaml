@@ -1,5 +1,5 @@
-# DataSource Config
 spring:
+  # DataSource Config
   datasource:
     # comment below param in online environment!
     initialization-mode: always
@@ -7,11 +7,23 @@ spring:
     # driver-class-name: com.mysql.cj.jdbc.Driver
     schema: classpath:mysql/schema.sql
     data: classpath:mysql/data.sql
-    url: jdbc:mysql://localhost/test?characterEncoding=utf8
+    url: jdbc:mysql://localhost/mp-test?characterEncoding=utf8
     # url: jdbc:h2:mem:test
     username: root
     password: secret
+  # Cache Config
+  cache:
+    type: redis
+    cache-names:
+    - ExamItems
+    redis:
+      time-to-live: 60000
+      cache-null-values: false
+  # Redis Config
+  redis:
+    host: localhost
 
+# MP config
 mybatis-plus:
   type-enums-package: com.li3huo.mybatisplus.demo.entity.enums
 

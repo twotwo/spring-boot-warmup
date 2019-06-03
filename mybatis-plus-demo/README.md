@@ -60,7 +60,9 @@ spring:
 
 ### 运行测试
 
-`mvn test`
+首先启动后台服务 `docker-compose up -d`
+
+然后运行 `mvn test`
 
 ```mysql
 CREATE DATABASE test
@@ -121,3 +123,13 @@ public class BaseEntity {
 ## CRUD
 
 [Mapper CRUD](https://mybatis.plus/guide/crud-interface.html)
+
+
+## Cache with Redis
+
+1. pom.xml add `starter-cache` & `starter-data-redis`
+2. application.yaml `Cache Config` & `Redis Config`
+3. DemoApplication.java add `@EnableCaching`
+4. ExamService.java `@CacheConfig(cacheNames = "ExamItemsCache")` & `@Cacheable`
+5. ExamItem.java `implements Serializable`
+ 

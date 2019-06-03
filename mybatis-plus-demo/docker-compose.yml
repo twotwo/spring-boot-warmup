@@ -1,0 +1,27 @@
+version: "3"
+
+networks:
+  default:
+    external:
+      name: baas #docker network create baas
+
+services:
+  mysql:
+    image: mariadb:10.3
+    container_name: mp-test-mysql
+    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    ports: 
+      - 3306:3306
+    environment:
+      - MYSQL_DATABASE=mp-test
+      - MYSQL_USER=mp-test
+      - MYSQL_PASSWORD=mp-test
+      - MYSQL_ROOT_PASSWORD=secret
+
+  redis:
+    image: redis:5.0
+    container_name: mp-test-redis
+    expose:
+      - 6379
+    ports:
+      - 6379:6379
