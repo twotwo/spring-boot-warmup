@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 import javax.annotation.Resource;
 import com.li3huo.mybatisplus.demo.entity.ExamItem;
-import com.li3huo.mybatisplus.demo.service.ExamService;
+import com.li3huo.mybatisplus.demo.service.BookService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,10 +17,10 @@ import lombok.extern.slf4j.Slf4j;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Slf4j
-public class ExamServiceTest {
+public class BookServiceTest {
 
 	@Resource
-	private ExamService service;
+	private BookService service;
 
 	@Test
 	public void testInsert() {

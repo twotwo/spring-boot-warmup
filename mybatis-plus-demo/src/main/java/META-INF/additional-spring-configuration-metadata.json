@@ -1,5 +1,5 @@
 {"properties": [{
-  "name": "test",
+  "name": "exam",
   "type": "java.util.Map",
-  "description": "A description for 'test'"
+  "description": "physical exam configuration."
 }]}

@@ -34,6 +34,6 @@ logging:
     org.springframework: OFF
     com.li3huo.mybatisplus.demo: debug
 
-# User Define Value
-test:
-  key: abc 
+# Physical Exam Config
+exam:
+  doctor: Watson 

@@ -39,10 +39,14 @@ create table t_order_item (
 ) COMMENT '体检订单项目表';
 
 create table t_checklist (
+    id BIGINT AUTO_INCREMENT COMMENT '主键ID',
+    create_time TIMESTAMP COMMENT '创建时间',
+    update_time TIMESTAMP COMMENT '更新时间',
     order_id BIGINT NOT NULL COMMENT '外键-订单ID',
     item_id BIGINT NOT NULL COMMENT '外键-体检项目ID',
     check_time TIMESTAMP COMMENT '检查时间',
-		doctor VARCHAR(255) COMMENT '检查医生',
-		record VARCHAR(512) COMMENT '检查记录',
-		state TINYINT COMMENT '项目检查状态，'
+    doctor VARCHAR(255) COMMENT '检查医生',
+    record VARCHAR(512) COMMENT '检查记录',
+    state TINYINT COMMENT '项目检查状态，',
+    PRIMARY KEY (id)
 ) COMMENT '体检检查单';

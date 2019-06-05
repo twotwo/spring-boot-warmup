@@ -1,21 +1,20 @@
 package com.li3huo.mybatisplus.demo.service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.li3huo.mybatisplus.demo.controller.response.CheckinResponse;
+import com.li3huo.mybatisplus.demo.entity.Checklist;
 import com.li3huo.mybatisplus.demo.entity.ExamItem;
 import com.li3huo.mybatisplus.demo.entity.ExamOrder;
 import com.li3huo.mybatisplus.demo.entity.OrderItem;
 import com.li3huo.mybatisplus.demo.entity.enums.OrderState;
+import com.li3huo.mybatisplus.demo.mapper.ChecklistMapper;
 import com.li3huo.mybatisplus.demo.mapper.ExamItemMapper;
 import com.li3huo.mybatisplus.demo.mapper.ExamOrderMapper;
 import com.li3huo.mybatisplus.demo.mapper.OrderItemMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,7 +23,6 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Service
 @Slf4j
-@CacheConfig(cacheNames = "ExamItemsCache")
 public class ExamService {
   @Autowired
   private ExamItemMapper itemMapper;
@@ -35,14 +33,11 @@ public class ExamService {
   @Autowired
   private OrderItemMapper orderItemMapper;
 
-  @Cacheable
-  public List<ExamItem> getAllExamItem() {
-    return itemMapper.selectList(null);
-  }
+  @Autowired
+  private ChecklistMapper checklistMapper;
 
-  public ExamItem getExamItem(Long id) {
-    return itemMapper.selectById(id);
-  }
+  @Value("${exam.doctor}")
+	private String doctor;
 
   public List<ExamItem> getItemById(List<Integer> idList) {
     List<ExamItem> items = itemMapper.selectBatchIds(idList);
@@ -50,40 +45,53 @@ public class ExamService {
     return items;
   }
 
-  public ExamOrder createOrder(String patient, ExamItem...items) {
-    log.info("OrderState.INIT {}",OrderState.INIT);
-    
-    ExamOrder order = new ExamOrder().setPatient(patient)
-            .setItems(new ArrayList<>(Arrays.asList(items)))
-            .setTotal(calcTotal(items))
-            .setState(OrderState.INIT);
-    orderMapper.insert(order);
-    // add ExamOrders to DB
-    if(order.getId()>0) {
-      for(ExamItem item: items) {
-        orderItemMapper.insert(new OrderItem().setOrderId(order.getId())
-          .setItemId(item.getId()));
-      }
+  public CheckinResponse checkin(long orderId) {
+    CheckinResponse response = new CheckinResponse();
+    ExamOrder order = orderMapper.selectById(orderId);
+    log.debug("checkin() find order {}", order);
+    if (null == order) {
+      response.setCode(100).setMsg("invalid order!");
+      return response;
     }
-    // orderCounter.increment();
-    ExamOrder newOrder = getOrderbyId(order.getId());
-    log.info("New Order: {}", newOrder);
-    return newOrder;
+    // load ExamItems
+    List<OrderItem> orderItems = orderItemMapper
+        .selectList(new QueryWrapper<OrderItem>().lambda().eq(OrderItem::getOrderId, orderId));
+    log.debug("checkin() load orderItems {}", orderItems);
+    order.setItems(itemMapper.selectBatchIds(
+        orderItems.stream().map(OrderItem::getItemId).collect(Collectors.toList())));
+
+    // order ok, then load Checklists, if not exist, then create
+    return response.setList(loadChecklistbyOrder(order)).setMsg("pls do exam as the checklist");
+  }
+
+  private List<Checklist> loadChecklistbyOrder(ExamOrder order) {
+
+    List<Checklist> list = checklistMapper.selectList(
+        new QueryWrapper<Checklist>().lambda().eq(Checklist::getOrderId, order.getId()));
+
+    if (list.size() > 0) {
+      return list;
+    }
+
+    // add Checklist to DB
+    for (ExamItem item : order.getItems()) {
+      Checklist checklist = new Checklist().setOrderId(order.getId()).setDoctor(doctor).setItemId(item.getId())
+          .setState(OrderState.INIT);
+      checklistMapper.insert(checklist);
+    }
+    return checklistMapper.selectList(
+        new QueryWrapper<Checklist>().lambda().eq(Checklist::getOrderId, order.getId()));
   }
 
   public ExamOrder getOrderbyId(Long id) {
     ExamOrder order = orderMapper.selectById(id);
     // load ExamItems
-    List<OrderItem> orderItems = orderItemMapper.selectList(new QueryWrapper<OrderItem>().lambda().eq(OrderItem::getOrderId, id));
-    log.info("orderItems() {}",orderItems);
-    order.setItems(itemMapper.selectBatchIds(orderItems.stream().map(OrderItem :: getItemId).collect(Collectors.toList())));
+    List<OrderItem> orderItems = orderItemMapper
+        .selectList(new QueryWrapper<OrderItem>().lambda().eq(OrderItem::getOrderId, id));
+    log.info("orderItems() {}", orderItems);
+    order.setItems(itemMapper.selectBatchIds(
+        orderItems.stream().map(OrderItem::getItemId).collect(Collectors.toList())));
     return order;
   }
 
-  private Long calcTotal(ExamItem...item) {
-    List<Long> items = Stream.of(item).map(c -> c.getPrice())
-            .collect(Collectors.toList());
-    return items.stream().collect(Collectors.summingLong(Long :: longValue));
-  }
-  
 }

@@ -11,8 +11,8 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-@TableName("t_order_item")
-public class Checklist {
+@TableName("t_checklist")
+public class Checklist extends BaseEntity{
   @TableField("order_id")
   private Long orderId;
   @TableField("item_id")

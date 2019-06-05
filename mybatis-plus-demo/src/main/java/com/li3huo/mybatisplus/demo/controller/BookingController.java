@@ -4,7 +4,7 @@ import java.util.List;
 import com.li3huo.mybatisplus.demo.controller.request.NewOrderRequest;
 import com.li3huo.mybatisplus.demo.entity.ExamItem;
 import com.li3huo.mybatisplus.demo.entity.ExamOrder;
-import com.li3huo.mybatisplus.demo.service.ExamService;
+import com.li3huo.mybatisplus.demo.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.HttpStatus;
@@ -26,7 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 public class BookingController {
 
   @Autowired
-  private ExamService service;
+  private BookService service;
 
   @GetMapping(path = "/menu")
   public List<ExamItem> getAll() {
